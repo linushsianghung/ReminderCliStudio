@@ -32,6 +32,13 @@ func main() {
 		flag.Parse()
 		fmt.Printf("Here is your TODO list: %s\n", todo)
 	} else {
+		/* Below implementation violates the Open-Closed Principle which states that "software entities should be open for extension, but closed for modification"
+			So what's the problems here:
+			1. When we need 100 subcommands
+			2. When there might be 3 ~ 10 commands need to be change frequently
+			3. When commands need to use other commands
+			4. 1 file per command
+		*/
 		cmd := os.Args[1]
 		switch cmd {
 		case "greet":
