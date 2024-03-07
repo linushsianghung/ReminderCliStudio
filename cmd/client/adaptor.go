@@ -16,7 +16,21 @@ type Adaptor struct {
 }
 
 func newAdaptor(uri string) Adaptor {
-	a := Adaptor{}
+	/*
+		In order for consistency, using var rather than Short Variable Declaration Operator for zero value initialisation
+		a := Adaptor{} => "empty" literal construction but not "zero" literal construction
+
+		Below assignment only for full construction, which means specifying value for each field, to avoid partial construction.
+		Otherwise, using variable for initial values and then assign them in literal construction
+		e.g.
+		client := &http.Client{}
+		backendEndpoint := uri
+		a := Adaptor{
+			client: client,
+			backendEndpoint: backendEndpoint,
+		}
+	*/
+	var a Adaptor
 	a.client = &http.Client{}
 	a.backendEndpoint = uri
 	a.commands = map[string]func() func(string) error{

@@ -15,7 +15,7 @@ type hashReader struct {
 
 func hashReaderRun() {
 	payload := []byte("Happy Chinese New Year")
-	if err := hashAndBroadcase(bytes.NewReader(payload)); err != nil {
+	if err := hashAndBroadcast(bytes.NewReader(payload)); err != nil {
 		fmt.Println("Error!!!")
 	}
 }
@@ -27,7 +27,7 @@ func newHashReader(b []byte) *hashReader {
 	}
 }
 
-func hashAndBroadcase(r io.Reader) error {
+func hashAndBroadcast(r io.Reader) error {
 	b, err := io.ReadAll(r)
 	if err != nil {
 		return err
